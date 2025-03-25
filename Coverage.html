@@ -17,7 +17,7 @@
     <header>
         <div class="navbar">
             <div class="logo-container">
-                <img src="/images/logo.jpg" alt="TravelX Logo" class="logo">
+                <img src="images/logo.jpg" alt="TravelX Logo" class="logo">
                 <h1>TravelX</h1>         
             </div>
             <nav>
@@ -45,7 +45,7 @@
         <div class="hero-content">
             <h2>Secure Your Travel with Confidence</h2>
             <p>Get the best travel insurance coverage for your next adventure.</p>
-            <a href="/slides/quote.html" class="btn">Get a Quote</a>
+            <a href="./slides/quote.html" class="btn">Get a Quote</a>
         </div>
     </section>
 
@@ -142,6 +142,28 @@
         </div>
     </footer>
 
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chatbot-icon" id="chatbotIcon">
+            <i class="fas fa-comment"></i>
+        </div>
+        <div class="chatbot-box" id="chatbotBox">
+            <div class="chatbot-header">
+                <h3>TravelX Assistant</h3>
+                <div class="close-btn" id="closeChatbot"><i class="fas fa-times"></i></div>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    <div class="message-content">Hello! I'm your TravelX assistant. How can I help you with your travel plans today?</div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your message here...">
+                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -160,6 +182,189 @@
                 $(this).css("opacity", "0").animate({opacity: 1}, 1200);
             });
         });
+
+        // Chatbot JavaScript
+        // Enhanced Chatbot JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const chatbotIcon = document.getElementById('chatbotIcon');
+    const chatbotBox = document.getElementById('chatbotBox');
+    const closeChatbot = document.getElementById('closeChatbot');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const sendMessage = document.getElementById('sendMessage');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+
+    // Insurance information for chatbot responses
+    const insuranceInfo = {
+        tripCancellation: {
+            title: "Trip Cancellation Coverage",
+            details: "Our Trip Cancellation insurance reimburses you for prepaid, non-refundable expenses if you need to cancel your trip for a covered reason. Coverage includes cancellations due to illness, injury, death of traveler or family member, severe weather, airline strikes, and more.",
+            limits: "Coverage limits typically range from $1,500 to $100,000 depending on your trip cost.",
+            exclusions: "Pre-existing conditions may not be covered unless you purchase the policy within 14-21 days of your initial trip deposit."
+        },
+        medicalEmergency: {
+            title: "Medical Emergency Coverage",
+            details: "Our Medical Emergency coverage provides financial protection for unexpected illnesses or injuries that occur during your trip. It covers emergency medical treatment, hospital stays, emergency medical evacuation, and repatriation.",
+            limits: "Coverage limits range from $50,000 to $1,000,000 depending on your destination and plan.",
+            exclusions: "Injuries from high-risk activities like skydiving or mountaineering may require additional coverage."
+        },
+        baggageLoss: {
+            title: "Baggage Loss Coverage",
+            details: "Our Baggage Loss insurance compensates you if your luggage is lost, stolen, or damaged during your trip. It also provides coverage for essential items if your baggage is delayed for more than 12 hours.",
+            limits: "Coverage typically ranges from $500 to $2,500 for lost baggage and $100 to $500 for baggage delay.",
+            exclusions: "Certain high-value items like electronics and jewelry may have coverage limits or require special documentation."
+        }
+    };
+
+    // Toggle chatbot
+    chatbotIcon.addEventListener('click', function() {
+        chatbotBox.classList.toggle('active');
+    });
+
+    // Close chatbot
+    closeChatbot.addEventListener('click', function() {
+        chatbotBox.classList.remove('active');
+    });
+
+    // Send message function
+    function sendUserMessage() {
+        const message = chatbotInput.value.trim();
+        if (message !== '') {
+            // Add user message
+            addMessage(message, 'user');
+            chatbotInput.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            // Process user message and generate response
+            setTimeout(() => {
+                removeTypingIndicator();
+                processUserMessage(message);
+            }, 1000);
+        }
+    }
+
+    // Send message button
+    sendMessage.addEventListener('click', sendUserMessage);
+
+    // Send message on Enter key
+    chatbotInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendUserMessage();
+        }
+    });
+
+    // Add message to chat
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', sender + '-message');
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.classList.add('message-content');
+        contentDiv.textContent = text;
+        
+        messageDiv.appendChild(contentDiv);
+        chatbotMessages.appendChild(messageDiv);
+        
+        // Scroll to bottom
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    // Show typing indicator
+    function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.classList.add('typing-indicator');
+        typingDiv.id = 'typingIndicator';
+        
+        for (let i = 0; i < 3; i++) {
+            const dot = document.createElement('span');
+            typingDiv.appendChild(dot);
+        }
+        
+        chatbotMessages.appendChild(typingDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    // Remove typing indicator
+    function removeTypingIndicator() {
+        const typingIndicator = document.getElementById('typingIndicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+
+    // Process user message and generate appropriate response
+    function processUserMessage(message) {
+        message = message.toLowerCase();
+        
+        // Check for greetings
+        if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+            addMessage("Hello! I'm your TravelX assistant. How can I help you with your travel insurance needs today?", 'bot');
+            return;
+        }
+        
+        // Check for trip cancellation queries
+        if (message.includes('cancel') || message.includes('cancellation')) {
+            const info = insuranceInfo.tripCancellation;
+            addMessage(`${info.title}: ${info.details}\n\nCoverage limits: ${info.limits}\n\nImportant note: ${info.exclusions}`, 'bot');
+            return;
+        }
+        
+        // Check for medical emergency queries
+        if (message.includes('medical') || message.includes('emergency') || message.includes('health')) {
+            const info = insuranceInfo.medicalEmergency;
+            addMessage(`${info.title}: ${info.details}\n\nCoverage limits: ${info.limits}\n\nImportant note: ${info.exclusions}`, 'bot');
+            return;
+        }
+        
+        // Check for baggage loss queries
+        if (message.includes('baggage') || message.includes('luggage') || message.includes('lost') || message.includes('stolen')) {
+            const info = insuranceInfo.baggageLoss;
+            addMessage(`${info.title}: ${info.details}\n\nCoverage limits: ${info.limits}\n\nImportant note: ${info.exclusions}`, 'bot');
+            return;
+        }
+        
+        // Check for quote queries
+        if (message.includes('quote') || message.includes('cost') || message.includes('price') || message.includes('much')) {
+            addMessage("I'd be happy to help you get a quote! To provide an accurate quote, we'll need a few details:\n\n1. Your destination\n2. Travel dates\n3. Number of travelers\n4. Ages of travelers\n\nYou can either provide these details here, or click on the 'Get a Quote' button on our homepage for a more detailed quote.", 'bot');
+            return;
+        }
+        
+        // Check for visa queries
+        if (message.includes('visa') || message.includes('passport') || message.includes('requirement')) {
+            addMessage("For visa requirements, please visit our Visa Assistance page where you can enter your passport country and destination to check specific requirements. Different countries have different visa policies that may depend on your nationality, purpose of visit, and length of stay.", 'bot');
+            return;
+        }
+        
+        // Default response
+        addMessage("I'm here to help with your travel insurance needs. You can ask me about our coverage options including trip cancellation, medical emergencies, and baggage loss. If you're ready for a quote, just let me know!", 'bot');
+    }
+
+    // Add the suggestions after a short delay
+    setTimeout(function() {
+        const suggestedQuestions = [
+            "What does trip cancellation cover?",
+            "Tell me about medical coverage",
+            "How much does travel insurance cost?"
+        ];
+        
+        const suggestionsDiv = document.createElement('div');
+        suggestionsDiv.classList.add('suggested-questions');
+        
+        suggestedQuestions.forEach(question => {
+            const button = document.createElement('button');
+            button.classList.add('suggestion-btn');
+            button.textContent = question;
+            button.addEventListener('click', function() {
+                chatbotInput.value = question;
+                sendUserMessage();
+            });
+            suggestionsDiv.appendChild(button);
+        });
+        
+        chatbotMessages.appendChild(suggestionsDiv);
+    }, 1000);
+});
     </script>
 
 </body>

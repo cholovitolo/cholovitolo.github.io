@@ -99,7 +99,7 @@ nav ul li a:hover {
 }
 
 body {
-    background: url("/images/slidder_2.jpg") no-repeat center center fixed;
+    background: url("../images/slidder_2.jpg") no-repeat center center fixed;
     background-size: cover;
     color: white;
     text-align: center;
