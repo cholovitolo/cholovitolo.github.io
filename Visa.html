@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Visa Requirement Checker</title>
+    <link rel="stylesheet" href="css/visa.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <script src="https://kit.fontawesome.com/yourkitcode.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+<body>
+
+    <!-- New Header Section -->
+    <header>
+        <div class="navbar">
+            <div class="logo-container">
+                <img src="/images/logo.jpg" alt="TravelX Logo" class="logo">
+                <h1>TravelX</h1>         
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="#">Popular Packages</a></li>
+                    <li class="dropdown">
+                        <a href="#">Travel Assistance</a>
+                        <ul class="dropdown-content">
+                            <li><a href="Coverage.html">Coverage</a></li>
+                            <li><a href="Visa.html">Visa Assistance</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>   
+        </div>
+    </header>
+
+    <!-- Visa Requirement Section -->
+    <section class="visa-section">
+        <div class="visa-container">
+            <h2>Visa Eligibility</h2>
+            <p>Enter your passport country and destination to check visa details.</p>
+
+            <form id="visaForm">
+                <label for="passport">Passport Country:</label>
+                <input type="text" id="passport" placeholder="e.g., CA" required>
+
+                <label for="destination">Destination Country:</label>
+                <input type="text" id="destination" placeholder="e.g., US" required>
+
+                <button type="submit">Check Requirement</button>
+            </form>
+
+            <div id="visaResult" class="result-box"></div>
+        </div>
+    </section>
+
+    <!-- Updated Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>TravelX</h3>
+                <p>Your Trusted Source for Travel! Canada's longest-serving online travel agency.</p>
+            </div>
+    
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Promotions</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="#">Best Price Guaranteed</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Advertise With Us</a></li>
+                    <li><a href="#">Travel Insurance</a></li>
+                    <li><a href="#">E-Documents</a></li>
+                    <li><a href="#">Our Travel Experts</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Travel Requirements</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-contact">
+                <p>Contact Us: <a href="mailto:customerservice@teamcoders.com">customerservice@teamcoders.com</a></p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+        </div>
+    
+        <div class="footer-social">
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com" target="_blank" class="social-icon"><i class="fab fa-x"></i></a>
+        </div>
+
+        <div class="footer-legal">
+            <p><strong>Terms & Conditions / Privacy & Security</strong></p>
+            <p>A.B.C Canada Travel Inc – d.b.a. © 2025 itravel2000.com, B.C. Reg. #3897, Ont. Reg. #50012834, Ontario permit holder #703376, with offices at 5343 Dundas Street West, 2nd Floor, Etobicoke, Ontario, M9B 6K5 Canada</p>
+            <p>Prices advertised on our site are valid if you purchase services in one single session. If you disconnect from our site, prices could be different in your next session. Prices include the contribution of customers to the Compensation Fund for Clients of Ontario travel agents.</p>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; 2025 TravelX. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script 
+    src="content/js/visa.js"></script> <!-- JavaScript File -->
+    </script>
+
+</body>
+</html>
+</body>
+</html>
